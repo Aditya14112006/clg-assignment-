@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Card - Box Model</title>
+  <style>
+    /* ===== 1. Reset and box-sizing =====
+       border-box: width includes content + padding + border */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ===== 2. Page ===== */
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.5;
+      color: #222;
+      background-color: #e9edf3;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* ===== 3. The card =====
+       width    -> total box width (border-box)
+       padding  -> space between content and border
+       border   -> line around the padding
+       margin   -> space outside the card */
+    .profile-card {
+      width: 340px;
+      margin: 20px;
+      padding: 28px 24px;
+      border: 2px solid #1f2a44;
+      border-radius: 16px;
+      background-color: #ffffff;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ===== 4. Avatar ===== */
+    .avatar {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 16px;            /* auto centers it horizontally */
+      border: 5px solid #0b66d0;
+      border-radius: 50%;
+      background-color: #1f2a44;
+      color: #ffffff;
+      font-size: 2.4rem;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ===== 5. Text ===== */
+    .name {
+      font-size: 1.5rem;
+      color: #1f2a44;
+    }
+
+    .role {
+      color: #0b66d0;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .location {
+      color: #667085;
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+
+    .bio {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 18px;
+      padding: 0 6px;
+    }
+
+    /* ===== 6. Stats row ===== */
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      flex: 1;
+      padding: 10px 6px;
+      border: 1px solid #d5dae3;
+      border-radius: 10px;
+      background-color: #f3f6fb;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.2rem;
+      color: #1f2a44;
+    }
+
+    .stat span {
+      font-size: 0.8rem;
+      color: #667085;
+    }
+
+    /* ===== 7. Skill tags ===== */
+    .tags {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .tags li {
+      display: inline-block;
+      padding: 4px 12px;
+      margin: 3px;
+      border-radius: 16px;
+      background-color: #e1ebfb;
+      color: #0b4fa8;
+      font-size: 0.85rem;
+    }
+
+    /* ===== 8. Buttons ===== */
+    .buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 10px 0;
+      border: 2px solid #0b66d0;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .btn-primary {
+      background-color: #0b66d0;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: #084a99;
+      border-color: #084a99;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: #0b66d0;
+    }
+
+    .btn-outline:hover {
+      background-color: #0b66d0;
+      color: #ffffff;
+    }
+
+    /* ===== 9. Small screens ===== */
+    @media (max-width: 400px) {
+      .profile-card {
+        width: 100%;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <article class="profile-card">
+    <div class="avatar">AR</div>
+
+    <h1 class="name">Aditya Raj</h1>
+    <p class="role">BCA (AI) Student</p>
+    <p class="location">Invertis University, Bareilly</p>
+
+    <p class="bio">
+      Learning web and game development. I like building projects and
+      turning ideas into working code.
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <strong>10+</strong>
+        <span>Projects</span>
+      </div>
+      <div class="stat">
+        <strong>5</strong>
+        <span>Languages</span>
+      </div>
+      <div class="stat">
+        <strong>1</strong>
+        <span>Hackathon</span>
+      </div>
+    </div>
+
+    <ul class="tags">
+      <li>JavaScript</li>
+      <li>Python</li>
+      <li>C</li>
+      <li>Unity</li>
+      <li>Linux</li>
+    </ul>
+
+    <div class="buttons">
+      <a class="btn btn-primary" href="https://github.com/your-username">GitHub</a>
+      <a class="btn btn-outline" href="mailto:rajadityaaa10@gmail.com">Contact</a>
+    </div>
+  </article>
+
+</body>
+</html>

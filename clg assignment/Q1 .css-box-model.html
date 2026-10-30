@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Basics & Box Model</title>
+  <style>
+    /* ===== 1. Reset and box-sizing ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ===== 2. Base styles ===== */
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.6;
+      color: #222;
+      background-color: #f2f4f8;
+    }
+
+    a { color: #0b66d0; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    code {
+      background-color: #e6e9ef;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+
+    /* ===== 3. Header and navigation ===== */
+    .site-header {
+      background-color: #1f2a44;
+      color: #ffffff;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .subtitle { color: #b8c4e0; margin-bottom: 15px; }
+
+    .nav a {
+      color: #ffffff;
+      display: inline-block;
+      padding: 8px 16px;
+      margin: 0 4px;
+      border: 2px solid transparent;
+      border-radius: 6px;
+    }
+
+    .nav a:hover { border-color: #ffffff; text-decoration: none; }
+
+    /* ===== 4. Layout (width, margin auto, padding) ===== */
+    .container {
+      max-width: 800px;
+      margin: 30px auto;      /* auto centers the box horizontally */
+      padding: 0 20px;
+    }
+
+    .card {
+      background-color: #ffffff;
+      padding: 24px;           /* space inside the border */
+      margin-bottom: 24px;     /* space outside the border */
+      border: 1px solid #d5dae3;
+      border-left: 6px solid #0b66d0;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .card h2 { color: #1f2a44; margin-bottom: 10px; }
+
+    /* ===== 5. Skills list ===== */
+    .skills { list-style: none; }
+
+    .skills li {
+      display: inline-block;
+      background-color: #e8f0fe;
+      color: #0b4fa8;
+      padding: 6px 14px;
+      margin: 4px 6px 4px 0;
+      border-radius: 20px;
+    }
+
+    /* ===== 6. Table ===== */
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+
+    th, td {
+      border: 1px solid #d5dae3;
+      padding: 10px 14px;
+      text-align: left;
+    }
+
+    th { background-color: #1f2a44; color: #ffffff; }
+    tr:nth-child(even) td { background-color: #f6f8fc; }
+
+    /* ===== 7. Box model visual demo ===== */
+    .label {
+      display: block;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .margin-layer {
+      background-color: #f9cc9d;
+      padding: 20px;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .border-layer {
+      background-color: #fddd9b;
+      border: 6px solid #333333;
+      padding: 10px;
+    }
+
+    .padding-layer {
+      background-color: #c3d08b;
+      padding: 20px;
+    }
+
+    .content-layer {
+      background-color: #8cb6c0;
+      padding: 16px;
+      font-weight: bold;
+    }
+
+    /* ===== 8. Footer ===== */
+    .site-footer {
+      background-color: #1f2a44;
+      color: #b8c4e0;
+      text-align: center;
+      padding: 16px;
+      margin-top: 40px;
+    }
+
+    /* ===== 9. Small screens ===== */
+    @media (max-width: 600px) {
+      .card { padding: 16px; }
+      .nav a { padding: 6px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>Aditya Raj</h1>
+    <p class="subtitle">BCA (Artificial Intelligence) Student</p>
+    <nav class="nav">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#boxmodel">Box Model</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="about" class="card">
+      <h2>About Me</h2>
+      <p>I am a BCA student learning programming, web development and data analysis. This page was converted from plain HTML into a styled webpage using CSS.</p>
+    </section>
+
+    <section id="skills" class="card">
+      <h2>My Skills</h2>
+      <ul class="skills">
+        <li>HTML and CSS</li>
+        <li>JavaScript</li>
+        <li>Python</li>
+        <li>C</li>
+        <li>Linux and Shell Scripting</li>
+      </ul>
+    </section>
+
+    <section id="boxmodel" class="card">
+      <h2>The CSS Box Model</h2>
+      <p>Every HTML element is a rectangular box made of four parts:</p>
+
+      <div class="margin-layer">
+        <span class="label">margin</span>
+        <div class="border-layer">
+          <span class="label">border</span>
+          <div class="padding-layer">
+            <span class="label">padding</span>
+            <div class="content-layer">content</div>
+          </div>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>Part</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Content</td><td>The text or image inside the box</td></tr>
+          <tr><td>Padding</td><td>Space between the content and the border</td></tr>
+          <tr><td>Border</td><td>The line around the padding</td></tr>
+          <tr><td>Margin</td><td>Space outside the border</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <p>Find my work on <a href="https://github.com/">GitHub</a>.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Aditya Raj</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Card Project - Aditya Raj</title>
+  <style>
+    /* ===== 1. Reset and box-sizing ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ===== 2. Base styles ===== */
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.6;
+      color: #222;
+      background-color: #eef1f7;
+    }
+
+    a { text-decoration: none; }
+    ul { list-style: none; }
+
+    .wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== 3. Responsive navigation menu =====
+       Desktop: links in a row (flexbox).
+       Mobile: links hide and a hamburger button toggles them.
+       The toggle uses a hidden checkbox, so no JavaScript is needed. */
+    .navbar {
+      background-color: #111a2e;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+    }
+
+    .logo {
+      color: #ffffff;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .logo span { color: #4da3ff; }
+
+    .nav-links {
+      display: flex;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      display: block;
+      color: #c9d4ee;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover {
+      background-color: #1f2d4f;
+      color: #ffffff;
+    }
+
+    #menu-toggle { display: none; }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      margin: 5px 0;
+      background-color: #ffffff;
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* ===== 4. Page layout: card + intro side by side (flexbox) ===== */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      padding: 60px 0;
+    }
+
+    .intro { flex: 1; }
+
+    .intro h1 {
+      font-size: 2.6rem;
+      line-height: 1.2;
+      color: #111a2e;
+      margin-bottom: 14px;
+    }
+
+    .intro h1 span { color: #0b66d0; }
+
+    .intro p {
+      color: #555;
+      margin-bottom: 24px;
+      max-width: 480px;
+    }
+
+    /* ===== 5. Profile card (box model) ===== */
+    .profile-card {
+      width: 340px;
+      flex-shrink: 0;
+      padding: 28px 24px;
+      border: 2px solid #1f2a44;
+      border-radius: 16px;
+      background-color: #ffffff;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .avatar {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 16px;
+      border: 5px solid #0b66d0;
+      border-radius: 50%;
+      background-color: #1f2a44;
+      color: #ffffff;
+      font-size: 2.4rem;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .name { font-size: 1.5rem; color: #1f2a44; }
+    .role { color: #0b66d0; font-weight: 600; }
+    .location { color: #667085; font-size: 0.9rem; margin-bottom: 14px; }
+
+    .bio {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 18px;
+    }
+
+    .stats {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      flex: 1;
+      padding: 10px 6px;
+      border: 1px solid #d5dae3;
+      border-radius: 10px;
+      background-color: #f3f6fb;
+    }
+
+    .stat strong { display: block; font-size: 1.2rem; color: #1f2a44; }
+    .stat span { font-size: 0.8rem; color: #667085; }
+
+    .tags { margin-bottom: 20px; }
+
+    .tags li {
+      display: inline-block;
+      padding: 4px 12px;
+      margin: 3px;
+      border-radius: 16px;
+      background-color: #e1ebfb;
+      color: #0b4fa8;
+      font-size: 0.85rem;
+    }
+
+    /* ===== 6. Buttons ===== */
+    .buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      flex: 1;
+      display: inline-block;
+      padding: 10px 20px;
+      border: 2px solid #0b66d0;
+      border-radius: 8px;
+      font-weight: 600;
+      text-align: center;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .btn-primary { background-color: #0b66d0; color: #ffffff; }
+    .btn-primary:hover { background-color: #084a99; border-color: #084a99; }
+    .btn-outline { background-color: transparent; color: #0b66d0; }
+    .btn-outline:hover { background-color: #0b66d0; color: #ffffff; }
+
+    .intro .buttons { max-width: 340px; }
+
+    /* ===== 7. Skills grid (CSS Grid layout) ===== */
+    .skills {
+      padding: 20px 0 70px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.9rem;
+      color: #111a2e;
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .grid-item {
+      background-color: #ffffff;
+      padding: 24px;
+      border: 1px solid #d5dae3;
+      border-top: 5px solid #0b66d0;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    }
+
+    .grid-item h3 { color: #111a2e; margin-bottom: 6px; }
+    .grid-item p { color: #555; font-size: 0.95rem; }
+
+    /* ===== 8. Footer ===== */
+    .footer {
+      background-color: #0b1220;
+      color: #8795b5;
+      text-align: center;
+      padding: 18px;
+      font-size: 0.9rem;
+    }
+
+    /* ===== 9. Responsive: tablet and mobile ===== */
+    @media (max-width: 800px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 32px;
+        padding: 40px 0;
+      }
+
+      .intro p { margin-left: auto; margin-right: auto; }
+      .intro .buttons { margin: 0 auto; }
+
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .hamburger { display: block; }
+
+      .nav-inner { flex-wrap: wrap; }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding-top: 10px;
+      }
+
+      #menu-toggle:checked ~ .nav-links { display: flex; }
+
+      #menu-toggle:checked ~ .hamburger span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      #menu-toggle:checked ~ .hamburger span:nth-child(2) { opacity: 0; }
+      #menu-toggle:checked ~ .hamburger span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      .profile-card { width: 100%; }
+      .intro h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Responsive navigation -->
+  <nav class="navbar">
+    <div class="wrapper nav-inner">
+      <div class="logo">Aditya<span>.dev</span></div>
+
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="mailto:rajadityaaa10@gmail.com">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero: intro + profile card -->
+  <header class="wrapper hero" id="home">
+    <div class="intro">
+      <h1>Hi, I'm <span>Aditya Raj</span></h1>
+      <p>BCA (Artificial Intelligence) student at Invertis University. I build web and game projects and I'm always learning something new.</p>
+      <div class="buttons">
+        <a class="btn btn-primary" href="https://github.com/your-username">GitHub</a>
+        <a class="btn btn-outline" href="mailto:rajadityaaa10@gmail.com">Contact</a>
+      </div>
+    </div>
+
+    <article class="profile-card">
+      <div class="avatar">AR</div>
+      <h2 class="name">Aditya Raj</h2>
+      <p class="role">BCA (AI) Student</p>
+      <p class="location">Invertis University, Bareilly</p>
+
+      <p class="bio">
+        Learning web and game development. I like building projects and
+        turning ideas into working code.
+      </p>
+
+      <div class="stats">
+        <div class="stat"><strong>10+</strong><span>Projects</span></div>
+        <div class="stat"><strong>5</strong><span>Languages</span></div>
+        <div class="stat"><strong>1</strong><span>Hackathon</span></div>
+      </div>
+
+      <ul class="tags">
+        <li>JavaScript</li>
+        <li>Python</li>
+        <li>C</li>
+        <li>Unity</li>
+        <li>Linux</li>
+      </ul>
+
+      <div class="buttons">
+        <a class="btn btn-primary" href="https://github.com/your-username">GitHub</a>
+        <a class="btn btn-outline" href="mailto:rajadityaaa10@gmail.com">Contact</a>
+      </div>
+    </article>
+  </header>
+
+  <!-- Skills grid -->
+  <section class="skills" id="skills">
+    <div class="wrapper">
+      <h2 class="section-title">What I Work With</h2>
+      <div class="grid">
+        <div class="grid-item">
+          <h3>Web</h3>
+          <p>HTML, CSS and JavaScript for responsive websites and portfolios.</p>
+        </div>
+        <div class="grid-item">
+          <h3>Games</h3>
+          <p>Unity projects to practice game logic and design.</p>
+        </div>
+        <div class="grid-item">
+          <h3>Data and Systems</h3>
+          <p>Python, Power BI, Linux and shell scripting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2026 Aditya Raj</p>
+  </footer>
+
+</body>
+</html>

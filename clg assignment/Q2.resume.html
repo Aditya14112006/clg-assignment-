@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aditya Raj - Resume</title>
+  <style>
+    /* ===== 1. Reset and box-sizing ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ===== 2. Base styles ===== */
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.6;
+      color: #222;
+      background-color: #e9edf3;
+      padding: 30px 15px;
+    }
+
+    a { color: #0b66d0; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    ul { padding-left: 20px; }
+    li { margin-bottom: 4px; }
+
+    /* ===== 3. Resume page (box model: width, margin auto, padding, border) ===== */
+    .resume {
+      max-width: 900px;
+      margin: 0 auto;                 /* centers the page */
+      background-color: #ffffff;
+      border: 1px solid #cfd6e2;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+    }
+
+    /* ===== 4. Header ===== */
+    .resume-header {
+      background-color: #1f2a44;
+      color: #ffffff;
+      padding: 32px 36px;
+    }
+
+    .resume-header h1 {
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+    }
+
+    .role {
+      color: #9fb4e6;
+      font-size: 1.1rem;
+      margin-bottom: 14px;
+    }
+
+    .contact-info {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 24px;
+      font-size: 0.95rem;
+    }
+
+    .contact-info a { color: #ffffff; }
+
+    /* ===== 5. Two-column layout ===== */
+    .resume-body {
+      display: flex;
+    }
+
+    .sidebar {
+      width: 280px;
+      background-color: #f3f6fb;
+      padding: 28px 24px;
+      border-right: 1px solid #d9dfeb;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 28px 32px;
+    }
+
+    /* ===== 6. Section blocks ===== */
+    .block {
+      margin-bottom: 26px;            /* space outside */
+    }
+
+    .block h2 {
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #1f2a44;
+      border-bottom: 3px solid #0b66d0;
+      padding-bottom: 4px;            /* space inside */
+      margin-bottom: 12px;
+    }
+
+    /* ===== 7. Skill tags ===== */
+    .tags {
+      list-style: none;
+      padding: 0;
+    }
+
+    .tags li {
+      display: inline-block;
+      background-color: #e1ebfb;
+      color: #0b4fa8;
+      padding: 4px 12px;
+      margin: 0 6px 8px 0;
+      border-radius: 16px;
+      font-size: 0.9rem;
+    }
+
+    /* ===== 8. Entries (education, projects) ===== */
+    .entry {
+      border-left: 4px solid #0b66d0;
+      background-color: #fafbfd;
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .entry h3 {
+      font-size: 1.05rem;
+      color: #1f2a44;
+    }
+
+    .meta {
+      color: #667085;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+
+    /* ===== 9. Small screens ===== */
+    @media (max-width: 700px) {
+      .resume-body { flex-direction: column; }
+      .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #d9dfeb;
+      }
+      .main-content { padding: 24px; }
+    }
+
+    /* ===== 10. Print ===== */
+    @media print {
+      body { background: #ffffff; padding: 0; }
+      .resume { border: none; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="resume">
+
+    <header class="resume-header">
+      <h1>Aditya Raj</h1>
+      <p class="role">BCA (Artificial Intelligence) Student | Aspiring Developer</p>
+      <ul class="contact-info">
+        <li>Email: <a href="mailto:rajadityaaa10@gmail.com">rajadityaaa10@gmail.com</a></li>
+        <li>Phone: +91 XXXXX XXXXX</li>
+        <li>GitHub: <a href="https://github.com/your-username">github.com/your-username</a></li>
+        <li>Bareilly, Uttar Pradesh, India</li>
+      </ul>
+    </header>
+
+    <div class="resume-body">
+
+      <aside class="sidebar">
+        <section class="block">
+          <h2>Skills</h2>
+          <ul class="tags">
+            <li>JavaScript</li>
+            <li>Python</li>
+            <li>C</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Unity</li>
+            <li>Shell Scripting</li>
+            <li>Linux / UNIX</li>
+            <li>Power BI</li>
+          </ul>
+        </section>
+
+        <section class="block">
+          <h2>Interests</h2>
+          <ul>
+            <li>Game development</li>
+            <li>Web development</li>
+            <li>Data analysis</li>
+            <li>Artificial Intelligence</li>
+          </ul>
+        </section>
+
+        <section class="block">
+          <h2>Languages</h2>
+          <ul>
+            <li>English</li>
+            <li>Hindi</li>
+          </ul>
+        </section>
+      </aside>
+
+      <main class="main-content">
+        <section class="block">
+          <h2>Profile</h2>
+          <p>BCA student specializing in Artificial Intelligence, with hands-on experience in web and game development. Interested in building practical projects and growing as a developer.</p>
+        </section>
+
+        <section class="block">
+          <h2>Education</h2>
+          <div class="entry">
+            <h3>Bachelor of Computer Applications (Artificial Intelligence)</h3>
+            <p class="meta">Invertis University, Bareilly | 2024 - Present</p>
+            <p>Coursework: Programming, UNIX/Linux, Shell Scripting, Power BI, Data Analysis.</p>
+          </div>
+        </section>
+
+        <section class="block">
+          <h2>Projects</h2>
+
+          <div class="entry">
+            <h3>Portfolio Website</h3>
+            <p class="meta">HTML, CSS, JavaScript | GitHub Pages</p>
+            <ul>
+              <li>Designed a personal portfolio with a terminal-boot style intro.</li>
+              <li>Hosted on GitHub Pages.</li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h3>SIH 2026 Hackathon - Antarctic Ice Intelligence Platform</h3>
+            <p class="meta">Backend Lead | Team Project</p>
+            <ul>
+              <li>Built the backend API for a sea-ice and iceberg trajectory navigation platform.</li>
+              <li>Worked with a team on a Smart India Hackathon 2026 submission.</li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h3>Game Development Projects</h3>
+            <p class="meta">Unity, C#</p>
+            <ul>
+              <li>Built small games to practice game logic and design.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="block">
+          <h2>Certifications and Achievements</h2>
+          <ul>
+            <li>Add your certificates here</li>
+            <li>Add hackathons, awards or courses here</li>
+          </ul>
+        </section>
+      </main>
+
+    </div>
+  </div>
+
+</body>
+</html>
