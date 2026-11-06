@@ -1,0 +1,8 @@
+{
+  "catalogueVersion": 1,
+  "products": [
+    { "id": "p001", "name": "Notebook", "category": "Stationery", "price": 55, "inStock": true },
+    { "id": "p002", "name": "Blue Pen", "category": "Stationery", "price": 12, "inStock": true },
+    { "id": "p003", "name": "Water Bottle", "category": "Accessories", "price": 199, "inStock": false }
+  ]
+}
